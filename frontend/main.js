@@ -8,17 +8,17 @@ let ws;
 function connectWebSocket() {
   ws = new WebSocket('ws://localhost:8000/ws/logs');
   ws.onopen = () => {
-    appendLog('[WebSocket 연결됨]');
+    appendLog('[WebSocket 연결됨]\n');
   };
   ws.onmessage = (event) => {
     appendLog(event.data);
   };
   ws.onclose = () => {
-    appendLog('[WebSocket 연결 종료, 2초 후 재연결]');
+    appendLog('[WebSocket 연결 종료, 2초 후 재연결]\n');
     setTimeout(connectWebSocket, 2000);
   };
   ws.onerror = (e) => {
-    appendLog('[WebSocket 오류]');
+    appendLog('[WebSocket 오류]\n');
   };
 }
 connectWebSocket();
@@ -39,6 +39,6 @@ function sendButtonClick(num) {
       if (!res.ok) throw new Error('서버 오류');
     })
     .catch(() => {
-      appendLog(`[버튼 ${num} 요청 실패]`);
+      appendLog(`[버튼 ${num} 요청 실패]\n`);
     });
 }

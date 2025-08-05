@@ -73,7 +73,7 @@ async def websocket_logs(websocket: WebSocket):
 async def button_click(num: int):
     if num not in [1, 2, 3]:
         return JSONResponse(status_code=400, content={"error": "Invalid button"})
-    print(f"[버튼 {num} 클릭됨]")
+    print(f"[버튼 {num} 클릭됨]\n")
     return {"result": f"Button {num} clicked"}
 
 # Example: print a startup message

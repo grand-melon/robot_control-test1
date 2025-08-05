@@ -2,17 +2,38 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Log Command Window Demo</title>
+  <title>Cockpit UI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Log Command Window Demo</h1>
-  <div class="button-group">
-    <button id="btn1">버튼 1</button>
-    <button id="btn2">버튼 2</button>
-    <button id="btn3">버튼 3</button>
+  <div class="cockpit-container">
+    <!-- Left: Gundam schematic -->
+    <div class="gundam-panel">
+      <img src="assets/gundam.png" alt="Gundam Schematic" class="gundam-image">
+      <div class="gundam-part head"></div>
+      <div class="gundam-part chest"></div>
+      <div class="gundam-part arm-left"></div>
+      <div class="gundam-part arm-right"></div>
+      <div class="gundam-part leg-left"></div>
+      <div class="gundam-part leg-right"></div>
+    </div>
+
+    <!-- Center: Main control panel -->
+    <div class="main-panel">
+      <h1>CONTROL SYSTEM</h1>
+      <div class="hud-overlay">
+        <img src="assets/hud.png" class="hud-graphics" alt="HUD Graphics">
+      </div>
+
+      <div class="button-group">
+        <button id="btn1">시스템 부팅</button>
+        <button id="btn2">동작1</button>
+        <button id="btn3">동작2</button>
+      </div>
+
+      <div id="log-window" class="log-window"></div>
+    </div>
   </div>
-  <div id="log-window" class="log-window"></div>
   <script src="main.js"></script>
 </body>
 </html>

@@ -1,45 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 body {
-  font-family: 'Consolas', 'Menlo', 'Monaco', monospace;
-  background: #f5f5f5;
+  background-color: #000;
+  color: #00ffcc;
+  font-family: 'Orbitron', sans-serif;
   margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cockpit-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ── Left: Gundam Schematic ── */
+.gundam-panel {
+  flex: 1;
+  position: relative;
   padding: 20px;
+  background: radial-gradient(#001d1d, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-h1 {
-  margin-bottom: 20px;
+.gundam-image {
+  width: 80%;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 10px #00ffcc);
 }
 
+/* Glowing parts */
+.gundam-part {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #00ffcc;
+  box-shadow: 0 0 15px #00ffcc;
+  animation: glow 1.5s infinite alternate;
+  opacity: 0.8;
+}
+
+/* 위치 설정 */
+.head       { top: 20%; left: 50%; transform: translate(-50%, -50%); }
+.chest      { top: 35%; left: 50%; transform: translate(-50%, -50%); }
+.arm-left   { top: 35%; left: 35%; transform: translate(-50%, -50%); }
+.arm-right  { top: 35%; left: 65%; transform: translate(-50%, -50%); }
+.leg-left   { top: 70%; left: 45%; transform: translate(-50%, -50%); }
+.leg-right  { top: 70%; left: 55%; transform: translate(-50%, -50%); }
+
+@keyframes glow {
+  0%   { box-shadow: 0 0 10px #00ffcc; }
+  100% { box-shadow: 0 0 25px #00ffcc; }
+}
+
+/* ── Right: Main Panel ── */
+.main-panel {
+  flex: 2;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #0a0a0a;
+  border-left: 2px solid #00ffcc44;
+}
+
+/* HUD Overlay */
+.hud-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hud-graphics {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.25; }
+}
+
+/* Buttons */
 .button-group {
-  margin-bottom: 20px;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
 }
 
-.button-group button {
-  font-size: 16px;
-  padding: 10px 24px;
-  margin-right: 10px;
-  border: none;
-  background: #1976d2;
-  color: #fff;
-  border-radius: 4px;
+button {
+  background: transparent;
+  color: #00ffcc;
+  border: 2px solid #00ffcc;
+  padding: 15px 25px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00ffcc;
 }
 
-.button-group button:hover {
-  background: #1565c0;
+button:hover {
+  background-color: rgba(0, 255, 204, 0.2);
+  box-shadow: 0 0 20px #00ffcc;
 }
 
+/* Log Window */
 .log-window {
-  background: #222;
-  color: #0f0;
-  font-size: 15px;
-  padding: 16px;
-  border-radius: 6px;
-  min-height: 200px;
-  max-height: 350px;
+  width: 90%;
+  height: 200px;
+  background-color: rgba(0, 255, 204, 0.05);
+  border: 1px solid #00ffcc;
+  padding: 15px;
   overflow-y: auto;
-  white-space: pre-wrap;
-  word-break: break-all;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-family: 'Consolas', 'Menlo', 'Monaco', monospace;
+  font-family: monospace;
+  font-size: 0.9rem;
+  box-shadow: inset 0 0 20px #00ffcc;
+  border-radius: 10px;
+  margin-top: 20px;
 }
